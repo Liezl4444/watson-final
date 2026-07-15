@@ -207,7 +207,10 @@ body{margin:0;font-family:var(--font-body);color:var(--black);background:var(--c
 .essay-intro p:last-child{margin-bottom:0}
 
 .essay-item{background:var(--white);border:1px solid var(--line);border-left:6px solid var(--orange);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden}
-.essay-trigger{width:100%;text-align:left;background:none;border:none;padding:20px 24px;font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px}
+.essay-trigger{width:100%;text-align:left;background:none;border:none;padding:20px 24px;font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:flex-start;gap:14px;min-height:44px}
+.essay-trigger .trigger-left{flex:1 1 auto;min-width:0}
+.essay-trigger .marks-pill{flex:0 0 auto;margin-left:auto}
+.essay-trigger .chevron{flex:0 0 auto}
 .essay-trigger .trigger-left{display:flex;align-items:center;gap:14px;min-width:0}
 .essay-trigger .crit-num{width:32px;height:32px;border-radius:999px;background:var(--gibs-blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-weight:700}
 .essay-trigger .crit-title{color:var(--gibs-blue);font-family:var(--font-display);font-weight:700;font-size:1.15rem}
@@ -250,7 +253,7 @@ body{margin:0;font-family:var(--font-body);color:var(--black);background:var(--c
 .feedback-summary-box p{margin:6px 0 0;color:#3d4a5f}
 .feedback-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
 .feedback-actions button{border:1px solid var(--gibs-blue);background:#fff;color:var(--gibs-blue);border-radius:12px;padding:12px 20px;font-weight:700;cursor:pointer;font:inherit;min-height:44px}
-.print-row{display:none;text-align:center;margin-top:24px}
+.print-row{display:block;text-align:center;margin-top:24px}
 
 .error-box{background:#FBEBE1;border:1px solid var(--orange);border-radius:12px;padding:12px 16px;font-size:.9rem;color:#333;margin:10px 0}
 
@@ -259,9 +262,8 @@ body{margin:0;font-family:var(--font-body);color:var(--black);background:var(--c
 @media print{
   .topbar,.mentor-panel,.reflection-complete-row,.essay-submit-panel,.feedback-actions,
   .assessment-stepper,.header-actions,.hub-primary-btn,.brief-card,.prompt-card,
-  .case-doc-card,.composer,#hub{display:none!important}
+  .case-doc-card,.composer,#hub,.print-row{display:none!important}
   .essay-panel[hidden]{display:block!important}
-  .print-row{display:block!important}
   .total-score-card,.crit-feedback-card,.essay-item,.company-profile{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   .crit-feedback-card{break-inside:avoid}
   .chat-log{max-height:none!important;overflow:visible!important}

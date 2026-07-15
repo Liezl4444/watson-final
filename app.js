@@ -792,6 +792,7 @@
 
     document.getElementById("hubBtn").addEventListener("click", returnToHub);
     document.getElementById("hubBtnEssay").addEventListener("click", returnToHub);
+    document.getElementById("hubBtnEssayBottom").addEventListener("click", returnToHub);
     document.getElementById("clearBtn").addEventListener("click", clearCurrentSim);
     document.getElementById("copyBtn").addEventListener("click", copyCurrentTranscript);
     document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
