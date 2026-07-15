@@ -23,6 +23,8 @@
     "Peter Watson, emotional, describes record staff turnover, unprecedented internal competition between divisions, and says 'there was more to life than numbers.' He asks for a recovery plan for the next board meeting that maintains the financial gains but has Abe 'take his foot off the accelerator' and use more of Watson's former management style.\n\n" +
     "That afternoon, Dave Landman's resignation letter arrives despite a promised promotion and a 35% salary increase. As Abe leaves for the gym, the CEO of the new owners phones: two of their other portfolio companies missed targets, so the group is relying on Watson to 'balance the books' this quarter. Abe, feeling he is 'on trial,' decides to call Jacob, his long-time personal mentor, for advice as he drives home.";
 
+  var CASE_TEXTS = { A: CASE_TEXT_A, B: CASE_TEXT_B, C: CASE_TEXT_C };
+
   /* ===================== Simulation data ===================== */
 
   var SIMULATIONS = [
@@ -32,6 +34,8 @@
       cardNumber: "1",
       cardTitle: "Simulation A: In Abe Nkosi's Shoes",
       cardDescription: "Step into the new CEO's chair and test your turnaround thinking.",
+      casePart: "A",
+      caseLabel: "Case Document A: The Handover",
       profileKicker: "Simulation A \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Abe Nkosi. If you were in his shoes, what steps would you take to return The Watson Group to a level of effective and sustainable performance? State your position, then defend it.",
@@ -58,6 +62,8 @@
       cardNumber: "2",
       cardTitle: "Simulation B: In Peter Watson's Shoes",
       cardDescription: "See the turnaround through the eyes of the man who built the culture Abe is dismantling.",
+      casePart: "B",
+      caseLabel: "Case Document B: Steve Conradie's Visit",
       profileKicker: "Simulation B \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Peter Watson. If you were Peter Watson, what action would you take? He has just learned the human cost of Abe's reforms. State what you would do, then defend it.",
@@ -84,6 +90,8 @@
       cardNumber: "3",
       cardTitle: "Simulation C: Advising Abe as Jacob",
       cardDescription: "Give the mentor's advice Abe is driving home to receive.",
+      casePart: "C",
+      caseLabel: "Case Document C: Abe's Reflection",
       profileKicker: "Simulation C \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Jacob, Abe's long-time personal mentor. What advice should Jacob give Abe? Abe is on the phone, feeling he is 'on trial'. State your advice, then defend it.",
@@ -364,6 +372,7 @@
 
     renderChatLog(id);
     updateMarkCompleteButton(id);
+    renderCaseDocument(sim);
 
     document.getElementById("hub").hidden = true;
     document.getElementById("essayView").classList.remove("active");
@@ -377,6 +386,30 @@
     }
 
     document.getElementById("userInput").focus();
+  }
+
+  function renderCaseDocument(sim) {
+    document.getElementById("caseDocSummary").textContent = "Read " + sim.caseLabel;
+    var textContainer = document.getElementById("caseDocText");
+    textContainer.innerHTML = "";
+    CASE_TEXTS[sim.casePart].split("\n\n").forEach(function (para) {
+      textContainer.appendChild(el("p", { text: para }));
+    });
+    var downloadBtn = document.getElementById("caseDocDownloadBtn");
+    downloadBtn.onclick = function () { downloadCaseDocument(sim); };
+  }
+
+  function downloadCaseDocument(sim) {
+    var text = sim.caseLabel + "\n\n" + CASE_TEXTS[sim.casePart];
+    var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "Watson Group - " + sim.caseLabel + ".txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   }
 
   function renderChatLog(id) {
@@ -700,8 +733,8 @@
     var text = lines.join("\n\n");
     var btn = document.getElementById("copyBtn");
     function done(ok) {
-      btn.textContent = ok ? "Copied!" : "Transcript";
-      if (ok) setTimeout(function () { btn.textContent = "Transcript"; }, 2200);
+      btn.textContent = ok ? "Copied!" : "Copy text";
+      if (ok) setTimeout(function () { btn.textContent = "Copy text"; }, 2200);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () { done(true); }).catch(function () { done(false); });
@@ -718,6 +751,7 @@
     document.getElementById("hubBtnEssay").addEventListener("click", returnToHub);
     document.getElementById("clearBtn").addEventListener("click", clearCurrentSim);
     document.getElementById("copyBtn").addEventListener("click", copyCurrentTranscript);
+    document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
 
     document.getElementById("chatForm").addEventListener("submit", function (e) {
       e.preventDefault();

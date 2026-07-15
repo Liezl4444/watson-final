@@ -241,11 +241,36 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--black);backgrou
 
 @media print{
   .topbar,.mentor-panel,.reflection-complete-row,.essay-submit-panel,.feedback-actions,
-  .assessment-stepper,.header-actions{display:none!important}
+  .assessment-stepper,.header-actions,.hub-primary-btn,.brief-card,.prompt-card,
+  .case-doc-card,.composer,#hub{display:none!important}
   .essay-panel[hidden]{display:block!important}
   .print-row{display:block!important}
   .total-score-card,.crit-feedback-card,.essay-item,.company-profile{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   .crit-feedback-card{break-inside:avoid}
+  .chat-log{max-height:none!important;overflow:visible!important}
+  .conversation-header-main{display:block}
+  .conversation-area{gap:8px}
 }
 
 @media(max-width:980px){.company-profile .profile-grid{grid-template-columns:1fr}}
+
+
+/* ===================== Mentor Hub button + conversation header restructure ===================== */
+.hub-primary-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--gibs-blue);color:var(--white);border:1px solid var(--gibs-blue);
+  border-radius:999px;padding:14px 26px;font-weight:700;font-size:1rem;cursor:pointer;font:inherit;
+  min-height:44px;margin-bottom:18px
+}
+.hub-primary-btn:hover,.hub-primary-btn:focus{outline:3px solid rgba(0,44,119,.25)}
+.hub-primary-btn span{font-size:1.05em}
+
+.conversation-header-main{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-actions{display:flex;gap:12px;flex-wrap:wrap}
+.header-actions .ghost-btn{flex:1 1 140px;text-align:center;justify-content:center}
+
+/* Case document card, inline-readable per simulation */
+.case-doc-card{background:var(--white);border:1px solid var(--line);border-left:6px solid var(--gibs-blue);border-radius:var(--radius);box-shadow:var(--shadow);padding:6px 28px 22px}
+.case-doc-card summary{cursor:pointer;color:var(--gibs-blue);font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.2rem;padding:16px 0;min-height:44px;display:flex;align-items:center}
+.case-doc-card p{color:#333;font-size:.96rem;margin:0 0 12px}
+.case-doc-card .case-doc-download{margin-top:6px}

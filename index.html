@@ -88,16 +88,27 @@
 
         <section class="conversation-area" aria-label="Mentor conversation">
           <div class="conversation-header">
-            <div>
-              <h2 id="conversationTitle">Simulation</h2>
-              <p id="conversationSubtitle">Case Document</p>
-            </div>
-            <div class="header-actions">
-              <button id="hubBtn" type="button" class="ghost-btn">Mentor Hub</button>
-              <button id="clearBtn" type="button" class="ghost-btn">Clear</button>
-              <button id="copyBtn" type="button" class="ghost-btn">Transcript</button>
+            <button id="hubBtn" type="button" class="hub-primary-btn"><span aria-hidden="true">&larr;</span> Mentor Hub</button>
+            <div class="conversation-header-main">
+              <div>
+                <h2 id="conversationTitle">Simulation</h2>
+                <p id="conversationSubtitle">Case Document</p>
+              </div>
+              <div class="header-actions">
+                <button id="printBtn" type="button" class="ghost-btn">Save / Print</button>
+                <button id="copyBtn" type="button" class="ghost-btn">Copy text</button>
+                <button id="clearBtn" type="button" class="ghost-btn">Clear</button>
+              </div>
             </div>
           </div>
+
+          <section class="case-doc-card" aria-label="Case document for this simulation">
+            <details id="caseDocDetails" open>
+              <summary id="caseDocSummary">Read Case Document</summary>
+              <div id="caseDocText"></div>
+              <button type="button" id="caseDocDownloadBtn" class="ghost-btn case-doc-download">Download this document (.txt)</button>
+            </details>
+          </section>
 
           <section class="brief-card" aria-label="Activity instructions">
             <h3>Before you begin</h3>
@@ -130,7 +141,7 @@
       <div class="essay-intro">
         <h1>Your Final Essay: The Watson Group Turnaround</h1>
         <p>You have heard from Abe, from Peter Watson, and from Jacob. Now write as yourself, in Abe Nkosi's chair. Work through the six sections below. Your diagnosis, framework application, decisions, and turnaround plan carry the most weight; a short closing reflection connects Watson Group to your own organisation.</p>
-        <p><button id="hubBtnEssay" type="button" class="ghost-btn">Back to Mentor Hub</button></p>
+        <p><button id="hubBtnEssay" type="button" class="hub-primary-btn"><span aria-hidden="true">&larr;</span> Mentor Hub</button></p>
       </div>
 
       <div id="essayCriteriaContainer"></div>
