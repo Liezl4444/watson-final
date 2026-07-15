@@ -36,6 +36,7 @@
       cardDescription: "Step into the new CEO's chair and test your turnaround thinking.",
       casePart: "A",
       caseLabel: "Case Document A: The Handover",
+      photo: "assets/abe-nkosi.jpg",
       profileKicker: "Simulation A \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Abe Nkosi. If you were in his shoes, what steps would you take to return The Watson Group to a level of effective and sustainable performance? State your position, then defend it.",
@@ -64,6 +65,7 @@
       cardDescription: "See the turnaround through the eyes of the man who built the culture Abe is dismantling.",
       casePart: "B",
       caseLabel: "Case Document B: Steve Conradie's Visit",
+      photo: "assets/peter-watson.jpg",
       profileKicker: "Simulation B \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Peter Watson. If you were Peter Watson, what action would you take? He has just learned the human cost of Abe's reforms. State what you would do, then defend it.",
@@ -92,6 +94,7 @@
       cardDescription: "Give the mentor's advice Abe is driving home to receive.",
       casePart: "C",
       caseLabel: "Case Document C: Abe's Reflection",
+      photo: "assets/jacob.jpg",
       profileKicker: "Simulation C \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Jacob, Abe's long-time personal mentor. What advice should Jacob give Abe? Abe is on the phone, feeling he is 'on trial'. State your advice, then defend it.",
@@ -269,7 +272,7 @@
       { label: "Part C \u2014 Abe Nkosi's reflection", text: CASE_TEXT_C }
     ];
     parts.forEach(function (p) {
-      var h4 = el("h4", { text: p.label });
+      var h4 = el("h3", { text: p.label });
       container.appendChild(h4);
       p.text.split("\n\n").forEach(function (para) {
         var pEl = el("p", { class: "case-extract", text: para });
@@ -349,6 +352,7 @@
     document.getElementById("profileRole").textContent = sim.profileRole;
     document.getElementById("profilePurpose").textContent = sim.profilePurpose;
     document.getElementById("profileChip").textContent = sim.profileChip;
+    setProfilePhoto(sim);
     document.getElementById("conversationTitle").textContent = sim.conversationTitle;
     document.getElementById("conversationSubtitle").textContent = sim.conversationSubtitle;
     document.getElementById("briefIntro").textContent = sim.briefIntro;
@@ -388,6 +392,16 @@
     document.getElementById("userInput").focus();
   }
 
+  function setProfilePhoto(sim) {
+    var wrap = document.getElementById("profilePhotoWrap");
+    var img = document.getElementById("profilePhoto");
+    if (!sim.photo) { wrap.hidden = true; return; }
+    img.onerror = function () { wrap.hidden = true; };
+    img.onload = function () { wrap.hidden = false; };
+    img.alt = sim.profileChip;
+    img.src = sim.photo;
+  }
+
   function renderCaseDocument(sim) {
     document.getElementById("caseDocSummary").textContent = "Read " + sim.caseLabel;
     var textContainer = document.getElementById("caseDocText");
@@ -414,15 +428,35 @@
 
   function renderChatLog(id) {
     var log = document.getElementById("chatLog");
+    var sim = SIMULATIONS.filter(function (s) { return s.id === id; })[0];
     log.innerHTML = "";
+    if (state.simMessages[id].length === 0) {
+      log.appendChild(el("div", { class: "empty-state", id: "emptyState" }, [
+        el("div", { class: "es-icon", "aria-hidden": "true", text: "\ud83d\udcbc" }),
+        el("p", { text: "Your conversation will appear here. Say hello, or answer the opening question, to begin." })
+      ]));
+      return;
+    }
     state.simMessages[id].forEach(function (m) {
-      appendMessageBubble(m.role, m.content);
+      appendMessageBubble(m.role, m.content, sim);
     });
   }
 
-  function appendMessageBubble(role, text) {
+  function appendMessageBubble(role, text, sim) {
     var log = document.getElementById("chatLog");
-    var avatar = el("div", { class: "avatar", "aria-hidden": "true", text: role === "assistant" ? "AI" : "You" });
+    var emptyState = document.getElementById("emptyState");
+    if (emptyState) emptyState.remove();
+
+    var avatar = el("div", { class: "avatar", "aria-hidden": "true" });
+    if (role === "assistant" && sim && sim.photo) {
+      var img = document.createElement("img");
+      img.src = sim.photo;
+      img.alt = "";
+      img.onerror = function () { img.remove(); avatar.textContent = "AI"; };
+      avatar.appendChild(img);
+    } else {
+      avatar.textContent = role === "assistant" ? "AI" : "You";
+    }
     var bubble = el("div", { class: "bubble" }, [el("p", { text: text })]);
     var message = el("div", { class: "message " + (role === "assistant" ? "mentor" : "user") }, [avatar, bubble]);
     log.appendChild(message);
@@ -453,11 +487,12 @@
   function sendChatMessage() {
     var id = state.activeSim;
     if (!id) return;
+    var sim = SIMULATIONS.filter(function (s) { return s.id === id; })[0];
     var input = document.getElementById("userInput");
     var text = input.value.trim();
     if (!text) return;
 
-    appendMessageBubble("user", text);
+    appendMessageBubble("user", text, sim);
     state.simMessages[id].push({ role: "user", content: text });
     state.simSentCount[id] += 1;
     input.value = "";
@@ -482,7 +517,7 @@
         var indicator = document.getElementById("typingIndicator");
         if (indicator) indicator.remove();
         var reply = (data && data.response) ? data.response : "I couldn't quite process that, could you try rephrasing?";
-        appendMessageBubble("assistant", reply);
+        appendMessageBubble("assistant", reply, sim);
         state.simMessages[id].push({ role: "assistant", content: reply });
         refreshInsightsUnlocked(id);
         updateMarkCompleteButton(id);

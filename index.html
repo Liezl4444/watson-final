@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GIBS AI Mentor Hub · Watson Group Final Case Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -11,7 +14,7 @@
   <header class="topbar" aria-label="Course header">
     <div class="brand">
       <a class="brand-logo" href="#hub" aria-label="Gordon Institute of Business Science">
-        <img src="assets/gibs-logo-vert.jpg" alt="Gordon Institute of Business Science, University of Pretoria" />
+        <img src="assets/gibs-logo-horiz.png" alt="Gordon Institute of Business Science, University of Pretoria" />
       </a>
       <div class="divider" aria-hidden="true"></div>
       <div class="course-label">
@@ -59,6 +62,10 @@
       <section class="layout" aria-label="Selected AI Mentor interaction">
         <aside class="mentor-panel" aria-label="AI Strategy Mentor profile">
           <section class="profile-card">
+            <div class="ceo-photo-wrap" id="profilePhotoWrap" hidden>
+              <img id="profilePhoto" src="" alt="" />
+              <div class="ceo-photo-overlay" aria-hidden="true"></div>
+            </div>
             <div class="profile-content simplified-profile">
               <p class="profile-kicker" id="profileKicker">Simulation · AI Mentor Moment</p>
               <h1 id="profileTitle">AI Strategy Mentor</h1>
@@ -122,7 +129,12 @@
           </div>
 
           <div class="chat-card">
-            <div id="chatLog" class="chat-log" role="log" aria-live="polite" aria-label="Conversation messages"></div>
+            <div id="chatLog" class="chat-log" role="log" aria-live="polite" aria-label="Conversation messages">
+              <div class="empty-state" id="emptyState">
+                <div class="es-icon" aria-hidden="true">&#128188;</div>
+                <p>Your conversation will appear here. Say hello, or answer the opening question, to begin.</p>
+              </div>
+            </div>
             <div class="reflection-complete-row">
               <p id="completeHint">Send at least 2 messages, then mark this reflection complete to unlock the next step.</p>
               <button type="button" class="mark-complete-btn" id="markCompleteBtn" disabled>Mark this reflection complete</button>

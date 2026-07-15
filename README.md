@@ -49,3 +49,24 @@ Nkosi's role, rather than "COO" as mentioned earlier. Worth a quick check
 with the course facilitator that this is the intended title before this goes
 live, since students roleplaying Abe will be reading the case documents
 directly.
+
+## Design update: navy/gold flagship visual system
+
+The interface now uses the same navy/gold/cream design language as the Mr. Jonas
+build (Playfair Display headings, DM Sans body, navy for structure and
+navigation, gold for primary actions and accents). This replaced the original
+GIBS Mentor Hub teal/purple/orange palette. All existing CSS class names and
+JS logic are unchanged; only the colour tokens and fonts changed, so this
+should not affect anything else you've customised.
+
+**Avatar photos:** once you've generated the three persona photos, drop them
+into an `assets` folder at the site root with these exact filenames:
+
+- `assets/abe-nkosi.jpg`
+- `assets/peter-watson.jpg`
+- `assets/jacob.jpg`
+
+The interface already looks for these paths and will show them automatically
+in both the profile card and the chat bubbles once they exist. Until then, it
+gracefully falls back to a plain navy circle with initials, so nothing looks
+broken in the meantime.
