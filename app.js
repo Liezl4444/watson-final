@@ -37,6 +37,8 @@
       casePart: "A",
       caseLabel: "Case Document A: The Handover",
       photo: "assets/abe-nkosi.jpg",
+      roleName: "Abe Nkosi",
+      roleTitle: "Chief Executive Officer, The Watson Group",
       profileKicker: "Simulation A \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Abe Nkosi. If you were in his shoes, what steps would you take to return The Watson Group to a level of effective and sustainable performance? State your position, then defend it.",
@@ -66,6 +68,8 @@
       casePart: "B",
       caseLabel: "Case Document B: Steve Conradie's Visit",
       photo: "assets/peter-watson.jpg",
+      roleName: "Peter Watson",
+      roleTitle: "Retired Chairman and CEO",
       profileKicker: "Simulation B \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Peter Watson. If you were Peter Watson, what action would you take? He has just learned the human cost of Abe's reforms. State what you would do, then defend it.",
@@ -95,6 +99,8 @@
       casePart: "C",
       caseLabel: "Case Document C: Abe's Reflection",
       photo: "assets/jacob.jpg",
+      roleName: "Jacob",
+      roleTitle: "Abe Nkosi's Personal Mentor",
       profileKicker: "Simulation C \u00b7 AI Mentor Moment",
       profileRole: "Strategic sparring partner",
       profilePurpose: "You are Jacob, Abe's long-time personal mentor. What advice should Jacob give Abe? Abe is on the phone, feeling he is 'on trial'. State your advice, then defend it.",
@@ -348,6 +354,8 @@
     if (!sim) return;
     state.activeSim = id;
 
+    document.getElementById("roleName").textContent = sim.roleName;
+    document.getElementById("roleTitle").textContent = sim.roleTitle;
     document.getElementById("profileKicker").textContent = sim.profileKicker;
     document.getElementById("profileRole").textContent = sim.profileRole;
     document.getElementById("profilePurpose").textContent = sim.profilePurpose;
@@ -448,11 +456,11 @@
     if (emptyState) emptyState.remove();
 
     var avatar = el("div", { class: "avatar", "aria-hidden": "true" });
-    if (role === "assistant" && sim && sim.photo) {
+    if (role === "user" && sim && sim.photo) {
       var img = document.createElement("img");
       img.src = sim.photo;
       img.alt = "";
-      img.onerror = function () { img.remove(); avatar.textContent = "AI"; };
+      img.onerror = function () { img.remove(); avatar.textContent = sim.roleName ? sim.roleName.charAt(0) : "Y"; };
       avatar.appendChild(img);
     } else {
       avatar.textContent = role === "assistant" ? "AI" : "You";

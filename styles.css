@@ -335,3 +335,22 @@ body{margin:0;font-family:var(--font-body);color:var(--black);background:var(--c
 .mark-complete-btn.done{background:#fff;color:var(--success);border-color:var(--success)}
 
 #printFeedbackBtn{background:var(--gold)!important;color:var(--navy)!important;border-color:var(--gold)!important}
+
+
+/* ===================== Role card vs AI Mentor identity split ===================== */
+
+/* The AI Mentor's own identity card: light background, no photo, consistent across all three sims */
+.mentor-identity-card{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:24px 26px;border-top:5px solid var(--gold)
+}
+.mentor-identity-card .profile-kicker{margin:0 0 10px;color:var(--gold-text);font-weight:700;font-size:.85rem}
+.mentor-identity-card h2{font-family:var(--font-display);font-size:1.3rem;line-height:1.15;margin:0 0 6px;color:var(--navy)}
+.mentor-identity-card .role{color:var(--text-mid);margin:0 0 16px;font-weight:700;font-size:.92rem}
+.mentor-identity-card .mentor-purpose{background:var(--gold-pale);border:1px solid var(--border-gold);border-radius:12px;padding:14px 16px;margin:0 0 16px}
+.mentor-identity-card .mentor-purpose p{margin:0;color:var(--text-dark)}
+.mentor-identity-card .availability{border-top:1px solid var(--line);margin-top:0;padding-top:16px;color:var(--text-mid);font-weight:700;display:flex;align-items:center;gap:10px}
+
+/* Role card: keep the dramatic navy photo treatment, but trim now that mentor-purpose/availability moved out */
+.profile-card .profile-content.simplified-profile{padding:26px 28px}
+.profile-card .company-chip{margin-top:4px}

@@ -60,30 +60,34 @@
 
     <section id="mentorView" class="mentor-view" aria-label="AI Mentor conversation view" hidden>
       <section class="layout" aria-label="Selected AI Mentor interaction">
-        <aside class="mentor-panel" aria-label="AI Strategy Mentor profile">
-          <section class="profile-card">
+        <aside class="mentor-panel" aria-label="Your role and AI Mentor profile">
+          <section class="profile-card" aria-label="The character you are roleplaying">
             <div class="ceo-photo-wrap" id="profilePhotoWrap" hidden>
               <img id="profilePhoto" src="" alt="" />
               <div class="ceo-photo-overlay" aria-hidden="true"></div>
             </div>
             <div class="profile-content simplified-profile">
-              <p class="profile-kicker" id="profileKicker">Simulation · AI Mentor Moment</p>
-              <h1 id="profileTitle">AI Strategy Mentor</h1>
-              <p class="role" id="profileRole">Strategic sparring partner</p>
+              <p class="profile-kicker">You are playing</p>
+              <h1 id="roleName">Character</h1>
+              <p class="role" id="roleTitle">Role</p>
 
-              <div class="mentor-purpose">
-                <p id="profilePurpose">Use this space to test and strengthen your strategic thinking.</p>
-              </div>
-
-              <div class="company-chip" aria-label="Mentor focus">
+              <div class="company-chip" aria-label="Roleplay context">
                 <span class="chip-dot" aria-hidden="true"></span>
                 <span class="chip-text" id="profileChip">Roleplay</span>
               </div>
+            </div>
+          </section>
 
-              <div class="availability">
-                <span class="available-dot"></span>
-                <span>Available for conversation</span>
-              </div>
+          <section class="mentor-identity-card" aria-label="AI Strategy Mentor profile">
+            <p class="profile-kicker" id="profileKicker">Simulation · AI Mentor Moment</p>
+            <h2 id="profileTitle">AI Strategy Mentor</h2>
+            <p class="role" id="profileRole">Strategic sparring partner</p>
+            <div class="mentor-purpose">
+              <p id="profilePurpose">Use this space to test and strengthen your strategic thinking.</p>
+            </div>
+            <div class="availability">
+              <span class="available-dot"></span>
+              <span>Available for conversation</span>
             </div>
           </section>
 
