@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GIBS AI Mentor Hub · Watson Group Final Case Assessment</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to main content</a>
+  <header class="topbar" aria-label="Course header">
+    <div class="brand">
+      <a class="brand-logo" href="#hub" aria-label="Gordon Institute of Business Science">
+        <img src="assets/gibs-logo-vert.jpg" alt="Gordon Institute of Business Science, University of Pretoria" />
+      </a>
+      <div class="divider" aria-hidden="true"></div>
+      <div class="course-label">
+        <span class="course-kicker">Final Case Assessment</span>
+        <span class="course-name">Competitive Strategy and Strategic Leadership</span>
+      </div>
+    </div>
+    <div class="status-pill" aria-label="Live mentor status"><span class="pulse"></span>Live Mentor</div>
+  </header>
+
+  <main id="main" class="mentor-shell">
+    <section id="hub" class="module-index" aria-label="Watson Group assessment module index">
+      <div class="index-hero">
+        <p class="section-kicker">The Watson Group: Strategic Turnaround</p>
+        <h1>Your Final Case Assessment</h1>
+        <p>
+          You are Abe Nkosi, newly appointed CEO of The Watson Group. Before you write your final essay, work through three short simulations that put you inside three different points of view on the turnaround. Each one sharpens the thinking you will need for your essay, which carries most of the marks and asks you to act as the leader fixing the company, then reflect briefly on your own context.
+        </p>
+      </div>
+
+      <section class="company-profile" aria-label="Meet The Watson Group">
+        <h2>Meet The Watson Group</h2>
+        <p>Founded in 1970, The Watson Group is a respected manufacturer and distributor of quality, branded furniture across South Africa, Kenya, Ghana and Zambia. Renamed from Watson Brothers in 2023 after a new investor took a 45% stake, the business has just recorded its highest sales in company history alongside a second consecutive year of low profits after tax. Peter Watson has retired as Chairman and CEO. You are the new CEO.</p>
+        <div class="profile-grid">
+          <div class="fact"><strong>Founded</strong><span>1970, as Watson Brothers</span></div>
+          <div class="fact"><strong>Footprint</strong><span>4 South African plants, 1 Ghana plant, ~2,500 employees</span></div>
+          <div class="fact"><strong>Markets</strong><span>South Africa, Kenya, Ghana, Zambia</span></div>
+          <div class="fact"><strong>Ownership</strong><span>45% sold to a new investor in 2023</span></div>
+          <div class="fact"><strong>Gross sales</strong><span>Over R6.5bn, at a record high</span></div>
+          <div class="fact"><strong>The catch</strong><span>Second consecutive year of low profit after tax</span></div>
+        </div>
+        <p>The old Watson model was conservative and paternalistic: fixed salaries with modest commissions, no compulsory retirement, and no dismissal without Peter Watson's personal review. Competitors have since out-marketed and out-returned Watson, product development has stalled, and digitalisation lags. This is the business you have just inherited.</p>
+        <details>
+          <summary>Read the full case extracts (Parts A, B and C)</summary>
+          <div id="fullCaseText"></div>
+        </details>
+      </section>
+
+      <ol class="assessment-stepper" id="assessmentStepper" aria-label="Assessment progress"></ol>
+
+      <div class="module-grid" id="moduleGrid"></div>
+    </section>
+
+    <section id="mentorView" class="mentor-view" aria-label="AI Mentor conversation view" hidden>
+      <section class="layout" aria-label="Selected AI Mentor interaction">
+        <aside class="mentor-panel" aria-label="AI Strategy Mentor profile">
+          <section class="profile-card">
+            <div class="profile-content simplified-profile">
+              <p class="profile-kicker" id="profileKicker">Simulation · AI Mentor Moment</p>
+              <h1 id="profileTitle">AI Strategy Mentor</h1>
+              <p class="role" id="profileRole">Strategic sparring partner</p>
+
+              <div class="mentor-purpose">
+                <p id="profilePurpose">Use this space to test and strengthen your strategic thinking.</p>
+              </div>
+
+              <div class="company-chip" aria-label="Mentor focus">
+                <span class="chip-dot" aria-hidden="true"></span>
+                <span class="chip-text" id="profileChip">Roleplay</span>
+              </div>
+
+              <div class="availability">
+                <span class="available-dot"></span>
+                <span>Available for conversation</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="insights-card" aria-label="Deep insights unlocked">
+            <h2><span aria-hidden="true">⌕</span> Deep insights unlocked</h2>
+            <ul class="insight-list" id="insightList"></ul>
+          </section>
+        </aside>
+
+        <section class="conversation-area" aria-label="Mentor conversation">
+          <div class="conversation-header">
+            <div>
+              <h2 id="conversationTitle">Simulation</h2>
+              <p id="conversationSubtitle">Case Document</p>
+            </div>
+            <div class="header-actions">
+              <button id="hubBtn" type="button" class="ghost-btn">Mentor Hub</button>
+              <button id="clearBtn" type="button" class="ghost-btn">Clear</button>
+              <button id="copyBtn" type="button" class="ghost-btn">Transcript</button>
+            </div>
+          </div>
+
+          <section class="brief-card" aria-label="Activity instructions">
+            <h3>Before you begin</h3>
+            <p id="briefIntro">Use the Mentor to strengthen your thinking. The Mentor will ask questions, challenge assumptions and help you identify gaps.</p>
+            <p>The Mentor will not write your answer for you. Use the conversation to strengthen your own thinking, then mark this reflection complete when you are ready to move on.</p>
+          </section>
+
+          <div class="prompt-card" aria-label="Conversation guide">
+            <h3>Conversation guide</h3>
+            <ol id="promptList"></ol>
+          </div>
+
+          <div class="chat-card">
+            <div id="chatLog" class="chat-log" role="log" aria-live="polite" aria-label="Conversation messages"></div>
+            <div class="reflection-complete-row">
+              <p id="completeHint">Send at least 2 messages, then mark this reflection complete to unlock the next step.</p>
+              <button type="button" class="mark-complete-btn" id="markCompleteBtn" disabled>Mark this reflection complete</button>
+            </div>
+            <form id="chatForm" class="composer" aria-label="Send message to mentor">
+              <label for="userInput" class="sr-only">Your message</label>
+              <textarea id="userInput" rows="3" placeholder="Type your response to the Mentor's question..." required></textarea>
+              <button id="sendBtn" type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section id="essayView" class="essay-view" aria-label="Final essay and AI marking">
+      <div class="essay-intro">
+        <h1>Your Final Essay: The Watson Group Turnaround</h1>
+        <p>You have heard from Abe, from Peter Watson, and from Jacob. Now write as yourself, in Abe Nkosi's chair. Work through the six sections below. Your diagnosis, framework application, decisions, and turnaround plan carry the most weight; a short closing reflection connects Watson Group to your own organisation.</p>
+        <p><button id="hubBtnEssay" type="button" class="ghost-btn">Back to Mentor Hub</button></p>
+      </div>
+
+      <div id="essayCriteriaContainer"></div>
+
+      <div class="essay-submit-panel">
+        <button type="button" id="essaySubmitBtn" disabled>Submit for AI marking</button>
+        <p class="guard-msg" id="essayGuardMsg">Write at least 40 words in each of the six sections above to unlock submission.</p>
+        <div class="essay-submit-status" id="essaySubmitStatus" role="status" aria-live="polite"></div>
+      </div>
+
+      <section class="feedback-report" id="feedbackReport" hidden aria-live="polite">
+        <h2>Your feedback report</h2>
+        <div id="feedbackContent"></div>
+        <div class="feedback-actions">
+          <button type="button" id="copyFeedbackBtn">Copy my report &amp; feedback</button>
+        </div>
+        <div class="print-row">
+          <button type="button" id="printFeedbackBtn" style="border:1px solid var(--gibs-blue);background:var(--gibs-blue);color:#fff;border-radius:12px;padding:12px 20px;font-weight:700;cursor:pointer;font:inherit;min-height:44px">Print / save this feedback report</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="setupDialog" class="setup-dialog">
+    <form method="dialog">
+      <h2 id="setupTitle">Start the Mentor Moment</h2>
+      <p id="setupText">This conversation will help you test your thinking before moving to the next step.</p>
+      <ul id="setupList">
+        <li>Bring your current thinking from the case.</li>
+        <li>Expect the Mentor to push back.</li>
+        <li>Mark your reflection complete when you are ready.</li>
+      </ul>
+      <button type="submit">Begin Conversation</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
